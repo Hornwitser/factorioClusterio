@@ -7,5 +7,4 @@ module.exports = {
 	version: "1.0.0",
 	binary: "nodePackage",
 	description: "Server side handling of functionality in the clusterio lua mod",
-	masterPlugin: "masterPlugin.js",
 }
