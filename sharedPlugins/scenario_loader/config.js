@@ -5,6 +5,5 @@
 module.exports = {
 	name: "scenario_loader",
 	version: "1.0.0",
-	binary: "nodePackage",
 	description: "Simple way to load scenarios using Hotpatch"
 }

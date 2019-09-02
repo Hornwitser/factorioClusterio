@@ -625,7 +625,7 @@ async function instanceManagement(instanceconfig) {
 		if(!global.subscribedFiles) {
 			global.subscribedFiles = {};
 		}
-		if(pluginConfig.binary == "nodePackage" && pluginConfig.enabled){
+		if (pluginConfig.enabled) {
 			// require plugin class and execute it
 			let pluginClass = require(path.resolve(pluginConfig.pluginPath, "index.js"));
 			plugins[i] = new pluginClass(combinedConfig, async function(data, callback){

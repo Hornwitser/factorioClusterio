@@ -13,3 +13,4 @@ Breaking Changes
 - The masterIP and masterPort config entries has been merged into masterURL.
   Breaks discordChat, playerManager, serverSelect, trainTeleports and
   clusterioModel.
+- Removed binary option from plugin config.
