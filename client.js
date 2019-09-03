@@ -14,10 +14,10 @@ const rmdirSync = require('rmdir-sync');
 const ioClient = require("socket.io-client");
 
 // internal libraries
-const objectOps = require("lib/objectOps.js");
+const objectOps = require("lib/objectOps");
 const fileOps = require("lib/fileOps");
-const stringUtils = require("lib/stringUtils.js");
-const configManager = require("lib/manager/configManager.js");
+const stringUtils = require("lib/stringUtils");
+const configManager = require("lib/manager/configManager");
 const pluginManager = require("lib/manager/pluginManager");
 const hashFile = require('lib/hash').hashFile;
 
@@ -167,7 +167,7 @@ async function manage() {
 		if(tool == "mods"){
 			(async function(){try{
 				// do require down here to reduce master load time
-				const modManager = require("lib/manager/modManager.js")(config);
+				const modManager = require("lib/manager/modManager")(config);
 				
 				// allow managing mods
 				if(action == "list"){
@@ -627,7 +627,7 @@ async function instanceManagement(instanceconfig) {
 		}
 		if (pluginConfig.enabled) {
 			// require plugin class and execute it
-			let pluginClass = require(path.resolve(pluginConfig.pluginPath, "index.js"));
+			let pluginClass = require("./" + pluginConfig.pluginPath);
 			plugins[i] = new pluginClass(combinedConfig, async function(data, callback){
 				if(data && data.toString('utf8')[0] != "/") {
                     console.log("Clusterio | "+ pluginsToLoad[i].name + " | " + data.toString('utf8'));

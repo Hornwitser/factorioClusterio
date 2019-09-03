@@ -1,9 +1,9 @@
 const needle = require("needle");
 const fs = require("fs-extra");
 
-const objectOps = require("lib/objectOps.js");
+const objectOps = require("lib/objectOps");
 const fileOps = require("lib/fileOps");
-const stringUtils = require("lib/stringUtils.js");
+const stringUtils = require("lib/stringUtils");
 
 const pluginConfig = require("./config");
 const COMPRESS_LUA = false;
