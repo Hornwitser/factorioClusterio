@@ -91,15 +91,15 @@ function messageInterface(command, callback) {
 
 function printUsage() {
 	console.error("Usage: ");
-	console.error("node client.js start [instance name]");
-	console.error("node client.js list");
-	console.error("node client.js delete [instance]");
+	console.error("node client start [instance name]");
+	console.error("node client list");
+	console.error("node client delete [instance]");
 	console.error("To download the latest version of the Clusterio lua mod, do");
-	console.error("node client.js manage shared mods download clusterio");
+	console.error("node client manage shared mods download clusterio");
 	console.error("To download a clusterio plugin, do");
-	console.error("node client.js manage shared plugins install https://github.com/Danielv123/playerManager");
+	console.error("node client manage shared plugins install https://github.com/Danielv123/playerManager");
 	console.error("For more management options, do");
-	console.error("node client.js manage");
+	console.error("node client manage");
 }
 
 async function listPlugins() {
@@ -149,16 +149,16 @@ async function listPlugins() {
 
 async function manage() {
 	// console.log("Launching mod manager");
-	//const fullUsage = 'node client.js manage [instance, "shared"] ["mods", "config"] ...';
+	//const fullUsage = 'node client manage [instance, "shared"] ["mods", "config"] ...';
 	function usage(instance, tool, action){
 		if(tool && tool == "mods"){
-			console.log('node client.js manage '+instance+' '+tool+' ["list", "search", "add", "remove", "update"]');
+			console.log('node client manage '+instance+' '+tool+' ["list", "search", "add", "remove", "update"]');
 		} else if(tool && tool == "config") {
-			console.log('node client.js manage '+instance+' '+tool+' ["list", "edit"]');
+			console.log('node client manage '+instance+' '+tool+' ["list", "edit"]');
 		} else if(tool && tool == "plugins") {
-			console.log(`node client.js manage ${instance} ${tool} ["list", "add", "remove"]`);
+			console.log(`node client manage ${instance} ${tool} ["list", "add", "remove"]`);
 		} else {
-			console.log('node client.js manage '+(instance || '[instance, "shared"]') +' '+ (tool || '["mods", "config", "plugins"]') + ' ...');
+			console.log('node client manage '+(instance || '[instance, "shared"]') +' '+ (tool || '["mods", "config", "plugins"]') + ' ...');
 		}
 	}
 	const tool = process.argv[4] || "";
@@ -237,7 +237,7 @@ async function manage() {
 
 async function deleteInstance() {
 	if (!process.argv[3]) {
-		console.error("Usage: node client.js delete [instance]");
+		console.error("Usage: node client delete [instance]");
 		process.exit(1);
 	} else if (typeof process.argv[3] == "string" && fs.existsSync(config.instanceDirectory+"/" + process.argv[3]) && process.argv[3] != "/" && process.argv[3] != "") {
 		fileOps.deleteFolderRecursiveSync(path.resolve(config.instanceDirectory, process.argv[3])); // TODO: Check if this can cause i-craft users to format their server by using wrong paths
@@ -582,7 +582,7 @@ async function startClient() {
 		await downloadMod();
 	} else if (command == "start" && instance === undefined) {
 		console.error("ERROR: No instanceName provided!");
-		console.error("Usage: node client.js start [instanceName]");
+		console.error("Usage: node client start [instanceName]");
 		process.exit(0);
 	} else if (command == "start" && typeof instance == "string" && instance != "/" && !fs.existsSync(instancedirectory)) {
 		await createInstance();
