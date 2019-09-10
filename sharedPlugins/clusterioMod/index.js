@@ -112,7 +112,7 @@ module.exports = class remoteCommands {
 					// send our entity and count to the master for him to keep track of
 					needle.post(that.config.masterURL + '/api/place', {
 						name: g[0],
-						count: g[1],
+						count: Number(g[1]),
 						instanceName: instance, // name of instance
 						instanceID: that.config.unique, // a hash computed from the randomly generated rcon password
 					}, needleOptionsWithTokenAuthHeader, function (err, resp, body) {
