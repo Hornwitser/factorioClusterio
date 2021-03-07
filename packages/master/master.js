@@ -1697,7 +1697,6 @@ ${err.stack}`
 });
 
 async function loadPlugins() {
-	let plugins = new Map();
 	for (let pluginInfo of pluginInfos) {
 		if (!masterConfig.group(pluginInfo.name).get("enabled")) {
 			continue;
@@ -1716,7 +1715,7 @@ async function loadPlugins() {
 				pluginInfo, { app, config: masterConfig, db, slaveConnections }, { endpointHitCounter }, logger
 			);
 			await masterPlugin.init();
-			plugins.set(pluginInfo.name, masterPlugin);
+			masterPlugins.set(pluginInfo.name, masterPlugin);
 
 		} catch (err) {
 			throw new libErrors.PluginError(pluginInfo.name, err);
@@ -1724,13 +1723,12 @@ async function loadPlugins() {
 
 		logger.info(`Loaded plugin ${pluginInfo.name} in ${Date.now() - pluginLoadStarted}ms`);
 	}
-	return plugins;
 }
 
 // handle plugins on the master
 async function pluginManagement() {
 	let startPluginLoad = Date.now();
-	masterPlugins = await loadPlugins();
+	await loadPlugins();
 	logger.info(`All plugins loaded in ${Date.now() - startPluginLoad}ms`);
 }
 
