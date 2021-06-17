@@ -4,20 +4,20 @@
 <br/>
 <br/>
 
-# factorioClusterio
+# Clusterio
 
 Discord for development/support/play: https://discord.gg/5XuDkje
 
 ## Important notice
 
-This is the development branch for factorioClusterio 2.0 which is currently undergoing heavy restructuring and refactoring.
+This is the development branch for clusterio 2.0 which is currently undergoing heavy restructuring and refactoring.
 Expect plugins and existing installations to frequently break when using this branch.
-If you don't want to be an alpha tester for 2.0 please use the stable [1.2.x branch][1.2.x] or [latest stable release](https://github.com/clusterio/factorioClusterio/releases/latest).
+If you don't want to be an alpha tester for 2.0 please use the stable [1.2.x branch][1.2.x] or [latest stable release](https://github.com/clusterio/clusterio/releases/latest).
 
 Installation instructions below are for the unstable master branch.
 Go to the page for the [1.2.x branch][1.2.x] for instructions on how to install the stable version.
 
-[1.2.x]: https://github.com/clusterio/factorioClusterio/tree/1.2.x
+[1.2.x]: https://github.com/clusterio/clusterio/tree/1.2.x
 
 ### Ways to support me/the project:
 
@@ -134,11 +134,11 @@ If you need it open an issue about it.
 <!--
 Clusterio has *very* limited support for using docker.
 
-    sudo docker build -t clusterio --no-cache --force-rm factorioClusterio
+    sudo docker build -t clusterio --no-cache --force-rm clusterio
 
 	sudo docker run --name master -e MODE=master -p 1234:8080 -d -it --restart=unless-stopped danielvestol/clusterio
 
-	sudo docker run --name slave -e MODE=slave -e INSTANCE=world1 -v /srv/clusterio/instances:/factorioClusterio/instances -p 1235:34167 -it --restart=unless-stopped danielvestol/clusterio
+	sudo docker run --name slave -e MODE=slave -e INSTANCE=world1 -v /srv/clusterio/instances:/clusterio/instances -p 1235:34167 -it --restart=unless-stopped danielvestol/clusterio
 
 The -v flag is used to specify the instance directory.
 Your instances (save files etc) will be stored there.
